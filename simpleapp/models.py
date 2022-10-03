@@ -9,7 +9,7 @@ class Product(models.Model):
     )
     description = models.TextField()
     quantity = models.IntegerField(
-        validators=[MinValueValidator(0)]
+        validators=[MinValueValidator(0)],
     )
     category = models.ForeignKey(
         to='Category',
@@ -17,7 +17,7 @@ class Product(models.Model):
         related_name='products',
     )
     price = models.FloatField(
-        validators=[MinValueValidator(0.0)]
+        validators=[MinValueValidator(0.0)],
     )
 
     def __str__(self):
@@ -25,9 +25,7 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(
-        max_length=100,
-        unique=True,
-    )
+    name = models.CharField(max_length=100, unique=True)
+
     def __str__(self):
         return self.name.title()
